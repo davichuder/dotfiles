@@ -11,3 +11,5 @@ node_modules/
 __pycache__/
 .mypy_cache/
 .venv/
+
+.atl/

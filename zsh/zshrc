@@ -1,0 +1,30 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Runtimes (node, java, rust) come from mise; no fnm/sdkman/rustup env here.
+
+# powerlevel10k prompt (theme + user config)
+source "/home/linuxbrew/.linuxbrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Correccion de bug de alacritty en wsl2
+alias alacritty="WINIT_UNIX_BACKEND=x11 alacritty"
+
+# Shell integrations (lines managed by `mise dot`; keep them exactly as declared)
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+autoload -Uz compinit; compinit -C; source <(carapace _carapace)
+eval "$(atuin init zsh)"
+source "/home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# zsh-syntax-highlighting must remain last of the ZLE plugins
+source "/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# >>> mise:activate >>> managed by mise — do not edit between markers
+eval "$(mise activate zsh)"
+# <<< mise:activate <<<
+_pr_stub() { (( ${+_PR_LOADED} )) || { typeset -g _PR_LOADED=1; eval "$(pay-respects zsh)"; }; f "$@"; }; unalias f 2>/dev/null; alias f=_pr_stub; command_not_found_handler() { (( ${+_PR_LOADED} )) || { typeset -g _PR_LOADED=1; eval "$(pay-respects zsh)"; }; command_not_found_handler "$@"; }
+alias fuck=f
