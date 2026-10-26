@@ -1,7 +1,46 @@
-# davic's dotfiles
+# my dotfiles
 
-Personal dotfiles, consumed by [dev-setup](https://github.com/davichuder/dev-setup)
-through its `mise.dotfiles.toml` module (clone into `~/dotfiles`, then map files).
+Plain dotfiles repository, made for the [`mise bootstrap`](https://mise.jdx.dev/bootstrap.html)
+dotfiles module and consumed by
+[dev-setup](https://github.com/davichuder/dev-setup) through its
+`mise.dotfiles.toml` module.
+
+## What this is (and why not chezmoi)
+
+This is deliberately a **plain-file repo**: files on disk are exactly the content
+that lands at the target path — no templates, no `run_*` scripts, no pre- or
+post-install hooks. All mapping logic lives *outside* the repo, declared in
+dev-setup's `mise.dotfiles.toml`:
+
+```toml
+[bootstrap.repos]
+"~/dotfiles" = { url = "https://github.com/davichuder/dotfiles.git", ref = "main" }
+
+[dotfiles]
+"~/.config/nvim" = "~/dotfiles/nvim"
+```
+
+Each `[dotfiles]` entry is a single mapping: destination (live path) → source
+(path inside this repo). Some tool that might plain-read this repo expecting a
+manager-specific layout stays custom: it is not a chezmoi-style source tree
+(`chezmoi` templates like `dot_zshrc.tmpl` don't exist here) and not a stow
+package tree either. If you want to use it with a different tool, wire your own
+mapping table — nothing in this repo assumes one.
+
+## Connection to dev-setup
+
+The `dotfiles` module there is **OFF by default**; it applies only when you opt
+in: `./bootstrap.sh <module> --dotfiles` (interactive runs ask about dotfiles;
+Enter keeps the default `dotfiles_url`, which is this repository). The module
+clones this repo into `~/dotfiles` and then applies the declared mappings.
+
+The mapping side lives in dev-setup; this repo only guarantees:
+
+- a single `main` branch with at least one commit (mise requires it before apply)
+- every mapped source path exists here when a `[dotfiles]` entry points to it
+- no secrets: ssh keys, cloud credentials, tokens (`.ssh/`, `.aws/`,
+  `.config/gh/hosts.yml`, `*.env`, `*.secret`, `*.keys`) are blocked by
+  `.gitignore` and never committed
 
 ## Layout
 
@@ -9,14 +48,8 @@ through its `mise.dotfiles.toml` module (clone into `~/dotfiles`, then map files
 nvim/        LazyVim starter (mapped to ~/.config/nvim)
 ```
 
-## Mappings
+## Current mappings
 
-| Live path           | Repo path    |
-| ------------------- | ------------ |
-| `~/.config/nvim/*`  | `nvim/*`     |
-
-## Applying
-
-Wires to `dev-setup`'s `mise.dotfiles.toml` (`[bootstrap.repos]` +
-`[dotfiles]` entries per file). See that repository's README for the
-`./bootstrap.sh <module> --dotfiles` flow.
+| Live path           | Repo path |
+| ------------------- | --------- |
+| `~/.config/nvim/*`  | `nvim/*`  |
