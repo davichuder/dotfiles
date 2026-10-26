@@ -1,0 +1,13 @@
+# defensive ignore — never version credentials or machine state
+.ssh/
+.aws/
+.gnupg/
+.config/gh/hosts.yml
+*.env
+.env*
+*.secret
+*.keys
+node_modules/
+__pycache__/
+.mypy_cache/
+.venv/
