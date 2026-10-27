@@ -1,5 +1,4 @@
-# Catppuccin-ish: OneHalfDark (matches delta)
---theme=OneHalfDark
+--theme="Dracula"
 --style=numbers,grid,changes
 --italic-text=always
 --pager=less

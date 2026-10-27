@@ -37,12 +37,13 @@ alias lg='lazygit'
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git --exclude node_modules"
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --info=inline --prompt='> ' --border-label=' fzf ' --preview 'bat --color=always --style=numbers --line-range :300 {}'"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color='border:240,fg:-1,preview-bg:-1,prompt:214,pointer:214,marker:46' --info=inline --prompt='> ' --border-label=' fzf ' --preview 'bat --color=always --style=numbers --line-range :300 {}'"
 
 # eza
-alias ls="eza --icons=auto"
-alias ll="eza -lah --git --icons=auto"
-alias tree="eza --tree --level=3 --icons=auto"
+export EZA_COLORS="di=32:ln=33:so=35:pi=33:ex=31:bd=33:cd=33:su=37:sg=37:tw=32:ow=33"
+alias ls="eza --icons=auto --group-directories-first --color=auto"
+alias ll="eza -lah --git --icons=auto --group-directories-first"
+alias tree="eza --tree --level=3 --icons=auto --group-directories-first"
 
 # dua: date/mtime is still via interactive key M; aliases preserve quick access
 alias duai="dua interactive"

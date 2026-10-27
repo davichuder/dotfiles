@@ -1,6 +1,7 @@
 [mgr]
 show_hidden = true
-sort_by = "modified"
+sort_by = "mtime"
 sort_reverse = true
-show_symlink = true
-linemode = "size"
+
+[theme]
+manager = { hovered = { fg = "white", bg = "gray" }, preview_hovered = { fg = "yellow" } }

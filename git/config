@@ -20,7 +20,7 @@
 	navigate = true
 	side-by-side = true
 	line-numbers = true
-	syntax-theme = OneHalfDark
+	syntax-theme = Monokai Extended
 [diff]
 	tool = difftastic
 [difftool "difftastic"]
