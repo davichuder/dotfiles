@@ -48,6 +48,7 @@ The mapping side lives in dev-setup; this repo only guarantees:
 zsh/zshrc    shell config           (mapped to ~/.zshrc)
 zsh/zshenv   per-shell env (PATH)   (mapped to ~/.zshenv)
 p10k.zsh     powerlevel10k config   (mapped to ~/.p10k.zsh)
+ghostty/     Ghostty config         (mapped to ~/.config/ghostty/config)
 nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 ```
 
@@ -57,5 +58,6 @@ nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 | ------------------- | ------------- |
 | `~/.config/nvim/*`  | `nvim/*`      |
 | `~/.p10k.zsh`       | `p10k.zsh`    |
-| `~/.zshrc`          | `zsh/zshrc`   |
-| `~/.zshenv`         | `zsh/zshenv`  |
+| `~/.zshrc`                | `zsh/zshrc`   |
+| `~/.zshenv`               | `zsh/zshenv`  |
+| `~/.config/ghostty/config` | `ghostty/config` |
