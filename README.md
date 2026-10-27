@@ -49,6 +49,7 @@ zsh/zshrc    shell config           (mapped to ~/.zshrc)
 zsh/zshenv   per-shell env (PATH)   (mapped to ~/.zshenv)
 p10k.zsh     powerlevel10k config   (mapped to ~/.p10k.zsh)
 ghostty/     Ghostty config         (mapped to ~/.config/ghostty/config)
+git/         git + delta config     (mapped to ~/.gitconfig)
 nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 ```
 
