@@ -1,0 +1,5 @@
+# Catppuccin-ish: OneHalfDark (matches delta)
+--theme=OneHalfDark
+--style=numbers,grid,changes
+--italic-text=always
+--pager=less

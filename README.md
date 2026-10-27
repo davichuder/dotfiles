@@ -49,6 +49,10 @@ zsh/zshrc    shell config           (mapped to ~/.zshrc)
 zsh/zshenv   per-shell env (PATH)   (mapped to ~/.zshenv)
 p10k.zsh     powerlevel10k config   (mapped to ~/.p10k.zsh)
 ghostty/     Ghostty config         (mapped to ~/.config/ghostty/config)
+bat/         bat config             (mapped to ~/.config/bat/config)
+ripgrep/     ripgrep CLI defaults   (mapped to ~/.config/ripgrep/config)
+fd/          fd ignore patterns     (mapped to ~/.config/fd/ignore)
+yazi/        yazi TUI defaults      (mapped to ~/.config/yazi/yazi.toml)
 git/         git + delta config     (mapped to ~/.gitconfig)
 lazygit/     Lazygit config         (mapped to ~/.config/lazygit/config.yml)
 gh/          gh CLI config          (mapped to ~/.config/gh/config.yml)
@@ -67,3 +71,7 @@ nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 | `~/.config/lazygit/config.yml` | `lazygit/config.yml` |
 | `~/.config/gh/config.yml`  | `gh/config.yml` |
 | `~/.gitconfig`            | `git/config` (partial) |
+| `~/.config/bat/config`          | `bat/config` |
+| `~/.config/ripgrep/config`     | `ripgrep/config` |
+| `~/.config/fd/ignore`          | `fd/ignore` |
+| `~/.config/yazi/yazi.toml`     | `yazi/yazi.toml` |
