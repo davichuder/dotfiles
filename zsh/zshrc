@@ -28,3 +28,6 @@ eval "$(mise activate zsh)"
 # <<< mise:activate <<<
 _pr_stub() { (( ${+_PR_LOADED} )) || { typeset -g _PR_LOADED=1; eval "$(pay-respects zsh)"; }; f "$@"; }; unalias f 2>/dev/null; alias f=_pr_stub; command_not_found_handler() { (( ${+_PR_LOADED} )) || { typeset -g _PR_LOADED=1; eval "$(pay-respects zsh)"; }; command_not_found_handler "$@"; }
 alias fuck=f
+unalias f 2>/dev/null; unfunction f 2>/dev/null; _pr_stub() { (( ${+_PR_LOADED} )) || { typeset -g _PR_LOADED=1; eval "$(pay-respects zsh)"; }; f "$@"; }; unalias f 2>/dev/null; alias f=_pr_stub; command_not_found_handler() { (( ${+_PR_LOADED} )) || { typeset -g _PR_LOADED=1; eval "$(pay-respects zsh)"; }; command_not_found_handler "$@"; }
+
+alias lg='lazygit'

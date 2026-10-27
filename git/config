@@ -20,4 +20,10 @@
 	navigate = true
 	side-by-side = true
 	line-numbers = true
-	syntax-theme = one-half-dark
+	syntax-theme = OneHalfDark
+[diff]
+	tool = difftastic
+[difftool "difftastic"]
+	cmd = difft \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false

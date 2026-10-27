@@ -50,6 +50,8 @@ zsh/zshenv   per-shell env (PATH)   (mapped to ~/.zshenv)
 p10k.zsh     powerlevel10k config   (mapped to ~/.p10k.zsh)
 ghostty/     Ghostty config         (mapped to ~/.config/ghostty/config)
 git/         git + delta config     (mapped to ~/.gitconfig)
+lazygit/     Lazygit config         (mapped to ~/.config/lazygit/config.yml)
+gh/          gh CLI config          (mapped to ~/.config/gh/config.yml)
 nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 ```
 
@@ -62,3 +64,6 @@ nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 | `~/.zshrc`                | `zsh/zshrc`   |
 | `~/.zshenv`               | `zsh/zshenv`  |
 | `~/.config/ghostty/config` | `ghostty/config` |
+| `~/.config/lazygit/config.yml` | `lazygit/config.yml` |
+| `~/.config/gh/config.yml`  | `gh/config.yml` |
+| `~/.gitconfig`            | `git/config` (partial) |

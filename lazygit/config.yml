@@ -1,0 +1,28 @@
+gui:
+  showRandomTip: false
+  showCommandLog: false
+  showBottomLine: true
+  sidePanelWidth: 0.33
+  theme:
+    activeBorderColor: ["#bd93f9", "bold"]
+    inactiveBorderColor: ["#6272a4"]
+    selectedLineBgColor: ["#44475a"]
+    unstagedChangesColor: ["#ff5555"]
+    cherryPickedCommitBgColor: ["#bd93f9"]
+    cherryPickedCommitFgColor: ["#282a36"]
+    optionsColor: ["#8be9fd"]
+    searchingColor: ["#f1fa8c"]
+git:
+  autoFetch: false
+  autoRefresh: true
+  diffRenderers:
+    - colorArg: always
+      command: "delta --paging=never --line-numbers --side-by-side --syntax-theme=OneHalfDark"
+  branchLogCmd: "git log --graph --color=always --pretty='%C(auto)%h %d %s %C(black)%C(bold)%cr'"
+  overrideGpg: false
+customCommands:
+  - key: "S"
+    description: "Stage all changes"
+    command: "git add -A"
+    context: "files"
+    output: terminal
