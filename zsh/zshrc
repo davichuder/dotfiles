@@ -47,3 +47,7 @@ alias tree="eza --tree --level=3 --icons=auto --group-directories-first"
 
 # dua: date/mtime is still via interactive key M; aliases preserve quick access
 alias duai="dua interactive"
+
+# jq/yq
+export JQ_COLORS="1;30:0;31:0;32:0;36:0;33:1;35:1;35:1;36"
+alias yq="yq --colors --prettyPrint"

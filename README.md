@@ -53,6 +53,7 @@ bat/         bat config             (mapped to ~/.config/bat/config)
 ripgrep/     ripgrep CLI defaults   (mapped to ~/.config/ripgrep/config)
 fd/          fd ignore patterns     (mapped to ~/.config/fd/ignore)
 yazi/        yazi TUI defaults      (mapped to ~/.config/yazi/yazi.toml)
+glow/        glow markdown pager    (mapped to ~/.config/glow/glow.yml)
 git/         git + delta config     (mapped to ~/.gitconfig)
 lazygit/     Lazygit config         (mapped to ~/.config/lazygit/config.yml)
 gh/          gh CLI config          (mapped to ~/.config/gh/config.yml)
@@ -75,3 +76,5 @@ nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 | `~/.config/ripgrep/config`     | `ripgrep/config` |
 | `~/.config/fd/ignore`          | `fd/ignore` |
 | `~/.config/yazi/yazi.toml`     | `yazi/yazi.toml` |
+
+| `~/.config/glow/glow.yml` | `glow/glow.yml` |
