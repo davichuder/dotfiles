@@ -1,0 +1,26 @@
+container-engine: docker
+ignore-errors: false
+
+diff:
+  hide:
+    - unmodified
+
+filetree:
+  collapse-dir: false
+  pane-width: 0.45
+  show-attributes: true
+
+layer:
+  show-aggregated-changes: false
+
+keybinding:
+  quit: q, ctrl+c
+  toggle-view: tab
+  filter-files: ctrl+f
+  close-filter-files: esc
+  up: up, k
+  down: down, j
+  left: left, h
+  right: right, l
+  page-up: pgup, u
+  page-down: pgdn, d

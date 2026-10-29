@@ -54,6 +54,9 @@ ripgrep/     ripgrep CLI defaults   (mapped to ~/.config/ripgrep/config)
 fd/          fd ignore patterns     (mapped to ~/.config/fd/ignore)
 yazi/        yazi TUI defaults      (mapped to ~/.config/yazi/yazi.toml)
 glow/        glow markdown pager    (mapped to ~/.config/glow/glow.yml)
+bottom/      bottom TUI config      (mapped to ~/.config/bottom/bottom.toml)
+dive/        dive config            (mapped to ~/.config/dive/dive.yaml)
+watchexec/   watchexec ignore       (mapped to ~/.config/watchexec/ignore)
 git/         git + delta config     (mapped to ~/.gitconfig)
 lazygit/     Lazygit config         (mapped to ~/.config/lazygit/config.yml)
 gh/          gh CLI config          (mapped to ~/.config/gh/config.yml)
@@ -78,3 +81,7 @@ nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 | `~/.config/yazi/yazi.toml`     | `yazi/yazi.toml` |
 
 | `~/.config/glow/glow.yml` | `glow/glow.yml` |
+
+| `~/.config/bottom/bottom.toml` | `bottom/bottom.toml` |
+| `~/.config/dive/dive.yaml` | `dive/dive.yaml` |
+| `~/.config/watchexec/ignore` | `watchexec/ignore` |

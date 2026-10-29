@@ -1,0 +1,35 @@
+# bottom 0.14 configuration
+[flags]
+dot_marker = true
+rate = "1s"
+temperature_type = "c"
+default_widget_type = "proc"
+expanded = false
+
+[styles]
+theme = "gruvbox"
+
+[[row]]
+ratio = 30
+[[row.child]]
+type = "cpu"
+
+[[row]]
+ratio = 40
+[[row.child]]
+ratio = 4
+type = "mem"
+[[row.child]]
+ratio = 3
+[[row.child.child]]
+type = "temp"
+[[row.child.child]]
+type = "disk"
+
+[[row]]
+ratio = 30
+[[row.child]]
+type = "net"
+[[row.child]]
+type = "proc"
+default = true
