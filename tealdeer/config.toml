@@ -1,0 +1,33 @@
+[style.command_name]
+foreground = "green"
+bold = true
+
+[style.example_text]
+foreground = "white"
+
+[style.example_code]
+foreground = "cyan"
+
+[style.example_variable]
+foreground = "yellow"
+bold = true
+
+[display]
+compact = false
+use_pager = false
+show_title = false
+placeholder_format = "long"
+
+[display.indent]
+base = 2
+command = 6
+
+[updates]
+auto_update = true
+auto_update_interval_hours = 168
+archive_source = "https://github.com/tldr-pages/tldr/releases/latest/download"
+tls_backend = "rustls-with-webpki-roots"
+
+[directories]
+
+[search]

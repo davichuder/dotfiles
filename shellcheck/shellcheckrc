@@ -1,0 +1,5 @@
+# ShellCheck 0.11 — global defaults
+shell=bash
+external-sources=true
+source-path=SCRIPTDIR
+enable=all
