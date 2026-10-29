@@ -1,0 +1,21 @@
+# navi 2.24 — interactive cheatsheets
+style:
+  tag:
+    color: cyan
+    width_percentage: 20
+    min_width: 12
+  comment:
+    color: green
+    width_percentage: 45
+    min_width: 35
+  snippet:
+    color: white
+
+finder:
+  command: fzf
+  overrides: --height 50% --layout=reverse --border --color='border:240,prompt:214,pointer:214'
+  overrides_var: --height 30% --layout=reverse --border --color='border:240,prompt:214,pointer:214'
+
+shell:
+  command: zsh
+  finder_command: zsh

@@ -1,0 +1,23 @@
+# atuin 18.x — shell history search
+dialect = "us"
+search_mode = "fuzzy"
+filter_mode = "global"
+style = "compact"
+inline_height = 40
+show_preview = true
+enter_accept = true
+secrets_filter = true
+store_failed = true
+keymap_mode = "emacs"
+max_preview_height = 4
+
+[ui]
+columns = ["duration", "time", "command"]
+syntax_highlight = true
+
+[preview]
+strategy = "auto"
+
+[stats]
+common_prefix = ["sudo"]
+ignored_commands = ["cd", "ls", "ll", "tree", "clear"]

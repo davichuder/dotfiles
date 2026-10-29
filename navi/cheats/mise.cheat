@@ -1,0 +1,49 @@
+% mise, dotfiles, dev-setup
+
+# Bootstrap this machine for an env module
+mise -E <module> bootstrap --yes
+
+$ module: printf '%s\n' wsl desktop server bazzite
+
+# Show what bootstrap would still install
+mise -E <module> bootstrap status --missing
+
+$ module: printf '%s\n' wsl desktop server bazzite
+
+# Bootstrap only tools + dotfiles (skip packages/services)
+mise -E <module>,dotfiles bootstrap --only dotfiles,tools --yes
+
+$ module: printf '%s\n' wsl desktop server bazzite
+
+# Show deployed dotfile entries and their diff
+mise dot status
+mise dot diff
+
+# Re-apply dotfile entries declared in mise.toml
+mise dot apply
+
+# Remove managed dotfile lines and blocks
+mise dot unapply --force --yes
+
+# Track a live file so mise keeps its history
+mise dot track ~/.zshrc
+
+# Browse dotfile history or roll back to a revision
+mise dot history
+mise dot rollback <rev>
+
+# Install or upgrade every tool in the current config
+mise install
+mise up
+
+# List installed tools and versions
+mise ls --current
+
+# Run a task declared in mise.toml (dev-setup: lint)
+mise run lint
+
+# Execute a command inside the mise tool environment
+mise x -- <command>
+
+# Diagnose mise configuration and activation
+mise doctor

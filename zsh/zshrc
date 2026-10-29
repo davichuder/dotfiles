@@ -17,8 +17,10 @@ alias alacritty="WINIT_UNIX_BACKEND=x11 alacritty"
 # Shell integrations (lines managed by `mise dot`; keep them exactly as declared)
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+export CARAPACE_BRIDGES='zsh,fish,bash'
 autoload -Uz compinit; compinit -C; source <(carapace _carapace)
 eval "$(atuin init zsh)"
+eval "$(navi widget zsh)"
 source "/home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # zsh-syntax-highlighting must remain last of the ZLE plugins
 source "/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

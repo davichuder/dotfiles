@@ -1,0 +1,431 @@
+% node, npm, pnpm, javascript
+
+# Run a script with auto-restart on change
+node --watch <file>
+
+$ file: fd -e js -e mjs -e ts -t f -d 3 . . 2>/dev/null | head -50
+
+# Run a package without installing it globally
+npx <package>
+
+$ package: printf '%s\n' prettier eslint typescript tsx serve
+
+# Clean install from the lockfile
+npm ci
+
+# Add a dev dependency with pnpm
+pnpm add -D <package>
+
+$ package: printf '%s\n' typescript vitest eslint prettier
+
+# Run a package binary once with pnpm
+pnpm dlx <package>
+
+$ package: printf '%s\n' create-vite prettier serve
+
+# Run a package.json script
+pnpm run <script>
+
+$ script: jq -r '.scripts | keys[]' package.json 2>/dev/null | head -20
+
+# Explain why a dependency is installed
+pnpm why <package>
+
+$ package: jq -r '.dependencies + .devDependencies | keys[]' package.json 2>/dev/null | head -30
+
+% go, golang
+
+# Run the current package
+go run .
+
+# Run every test in the module
+go test ./...
+
+# Run one test
+go test -run <test> ./...
+
+$ test: grep -rhoE '^func (Test[A-Za-z0-9_]+)' --include='*_test.go' . 2>/dev/null | sed 's/func //' | head -30
+
+# Tidy go.mod and go.sum
+go mod tidy
+
+# Build a binary
+go build -o <out> .
+
+$ out: printf '%s\n' bin/app app
+
+# Vet the module
+go vet ./...
+
+% python, uv
+
+# Create a new uv project
+uv init
+
+# Add a dependency
+uv add <package>
+
+$ package: printf '%s\n' requests httpx rich typer pytest
+
+# Sync the project environment from the lockfile
+uv sync
+
+# Run a command inside the project environment
+uv run <command>
+
+$ command: printf '%s\n' pytest python main.py ruff
+
+# Install a Python version
+uv python install <version>
+
+$ version: printf '%s\n' 3.13 3.12 3.11
+
+# Serve the current directory over HTTP
+python -m http.server 8000
+
+# Pretty-print JSON from stdin or a file
+python -m json.tool <file>
+
+$ file: fd -e json -t f -d 3 . . 2>/dev/null | head -50
+
+% java, jvm
+
+# Run a jar
+java -jar <jar>
+
+$ jar: fd -e jar -t f -d 3 . . 2>/dev/null | head -30
+
+# Show the JVM version
+java -version
+
+% rust, cargo
+
+# Build and run
+cargo run
+
+# Run tests
+cargo test
+
+# Add a crate
+cargo add <crate>
+
+$ crate: printf '%s\n' serde tokio anyhow clap reqwest
+
+# Lint with warnings as errors
+cargo clippy -- -D warnings
+
+# Optimized build
+cargo build --release
+
+# Format the crate
+cargo fmt
+
+% pay-respects, f, fix
+
+# Correct the previous failed command
+f
+
+% shellcheck, shell, lint
+
+# Lint a shell script
+shellcheck <file>
+
+$ file: fd -e sh -e bash -t f -d 3 . . 2>/dev/null | head -50
+
+# Fail only on warnings and above
+shellcheck -S warning <file>
+
+$ file: fd -e sh -e bash -t f -d 3 . . 2>/dev/null | head -50
+
+# Output in a compiler-friendly format
+shellcheck -f gcc <file>
+
+$ file: fd -e sh -e bash -t f -d 3 . . 2>/dev/null | head -50
+
+% shfmt, shell, format
+
+# Show the formatting diff
+shfmt -d <file>
+
+$ file: fd -e sh -e bash -t f -d 3 . . 2>/dev/null | head -50
+
+# Format in place with 2-space indent and switch-case indent
+shfmt -w -i 2 -ci <file>
+
+$ file: fd -e sh -e bash -t f -d 3 . . 2>/dev/null | head -50
+
+# List every script whose formatting differs
+shfmt -l .
+
+% tree-sitter, parser
+
+# Parse a file and print the syntax tree
+tree-sitter parse <file>
+
+$ file: fd -e go -e js -e py -e rs -e ts -t f -d 3 . . 2>/dev/null | head -50
+
+# Write the default config
+tree-sitter init-config
+
+# Compile the current grammar
+tree-sitter build
+
+% tldr, tealdeer, docs
+
+# Show practical examples for a command
+tldr <command>
+
+$ command: printf '%s\n' git docker rg fd tar curl
+
+# Force the Linux page
+tldr -p linux <command>
+
+$ command: printf '%s\n' git docker rg fd tar curl
+
+# Update the local page cache
+tldr -u
+
+% http, httpie, api
+
+# GET a URL
+http GET <url>
+
+$ url: printf '%s\n' https://api.github.com https://httpbin.org/get
+
+# POST JSON fields
+http POST <url> <key>=<value>
+
+$ url: printf '%s\n' https://httpbin.org/post
+
+# Show request and response headers
+http -v <url>
+
+$ url: printf '%s\n' https://httpbin.org/get
+
+# Download a file
+http --download <url>
+
+$ url: printf '%s\n' https://httpbin.org/image/png
+
+% opencode, agent
+
+# Start a new session in the current directory
+opencode
+
+# Continue the last session
+opencode -c
+
+# Start in a specific directory
+opencode <dir>
+
+$ dir: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+% pi, agent
+
+# Start the coding assistant
+pi
+
+# Start with an explicit provider and model
+pi --provider <provider> --model <model>
+
+$ provider: printf '%s\n' anthropic openai openrouter
+$ model: printf '%s\n' claude-sonnet-4 openai/gpt-5
+
+# Update pi itself
+pi update self
+
+% gentle-ai, agent, workflow
+
+# Configure AI coding agents on this machine
+gentle-ai install
+
+# Sync agent configs and skills to the installed version
+gentle-ai sync
+
+# Refresh the project skill registry
+gentle-ai skill-registry refresh
+
+# Index a project for CodeGraph
+gentle-ai codegraph init --cwd <root>
+
+$ root: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+# Check whether receipt-driven development is on
+gentle-ai review mode status
+
+% herdr, workspace, tmux
+
+# Start the workspace manager
+herdr
+
+# Start or attach a named session
+herdr --session <name>
+
+$ name: printf '%s\n' main work side
+
+# Attach an existing session
+herdr session attach <name>
+
+$ name: printf '%s\n' main work side
+
+# Connect to a remote machine over ssh
+herdr --remote <target>
+
+$ target: grep -E '^Host ' ~/.ssh/config 2>/dev/null | awk '{print $2}' | head -20
+
+# Update herdr
+herdr update
+
+% lazyssh, ssh
+
+# Pick an ssh host interactively
+lazyssh
+
+% lazyjournal, logs, journald
+
+# Browse journald, docker and file logs
+lazyjournal
+
+# Load more lines per stream
+lazyjournal -t <lines>
+
+$ lines: printf '%s\n' 2000 10000 50000
+
+# Load once instead of streaming
+lazyjournal -d
+
+% lazydocker, docker, compose
+
+# Manage containers, images and volumes in a TUI
+lazydocker
+
+# Open lazydocker for a compose project
+lazydocker -p <project>
+
+$ project: docker compose ls --format '{{.Name}}' 2>/dev/null | head -20
+
+# Open lazydocker with an alternate compose file
+lazydocker -f <file>
+
+$ file: fd -e yaml -e yml -t f -d 3 . . 2>/dev/null | grep -i compose | head -20
+
+% docker, compose, container
+
+# Start the stack in the background
+docker compose up -d
+
+# Follow logs of one service
+docker compose logs -f <service>
+
+$ service: docker compose config --services 2>/dev/null | head -30
+
+# List running services
+docker compose ps
+
+# Run a command inside a running service
+docker compose exec <service> <command>
+
+$ service: docker compose config --services 2>/dev/null | head -30
+$ command: printf '%s\n' sh bash ls env
+
+# Stop everything and remove volumes
+docker compose down -v
+
+# Rebuild without cache
+docker compose build --no-cache
+
+# Remove dangling images and stopped containers
+docker system prune -f
+
+% llama.cpp, llama-cli, llm
+
+# Run a one-shot prompt against a local model
+llama-cli -m <model> -p "<prompt>" -n 256
+
+$ model: fd -e gguf -t f -d 4 . ~/ 2>/dev/null | head -20
+$ prompt: printf '%s\n' 'Explain this error' 'Summarize this text' 'Write a regex for dates'
+
+# Start an OpenAI-compatible server
+llama-server -m <model> --port 8080 -c 4096
+
+$ model: fd -e gguf -t f -d 4 . ~/ 2>/dev/null | head -20
+
+# List models in the local cache
+llama-cli -cl
+
+% nvim, neovim, editor
+
+# Open a file
+nvim <file>
+
+$ file: fd -t f -d 3 . . 2>/dev/null | head -100
+
+# Open the current directory
+nvim .
+
+# Open at a specific line
+nvim +<line> <file>
+
+$ line: printf '%s\n' 1 10 50 100
+$ file: fd -t f -d 3 . . 2>/dev/null | head -100
+
+% htop, monitor
+
+# Open the process viewer
+htop
+
+# Filter by user
+htop -u <user>
+
+$ user: printf '%s\n' root davic
+
+% wget, download
+
+# Resume an interrupted download
+wget -c <url>
+
+$ url: printf '%s\n' https://example.com/file.zip
+
+# Mirror a site without going up the tree
+wget -r -np -k <url>
+
+$ url: printf '%s\n' https://example.com/docs/
+
+% rsync, sync, copy
+
+# Copy with progress and preserve attributes
+rsync -avh --progress <src> <dst>
+
+$ src: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+$ dst: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+# Dry run: show what would change
+rsync -avhn --delete <src> <dst>
+
+$ src: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+$ dst: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+# Mirror a directory, deleting extras on the destination
+rsync -avh --delete <src> <dst>
+
+$ src: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+$ dst: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+% zip, unzip, archive
+
+# Zip a directory recursively
+zip -r <out> <dir>
+
+$ out: printf '%s\n' backup.zip archive.zip
+$ dir: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+# List an archive's contents
+unzip -l <file>
+
+$ file: fd -e zip -t f -d 3 . . 2>/dev/null | head -30
+
+# Extract into a target directory
+unzip <file> -d <dir>
+
+$ file: fd -e zip -t f -d 3 . . 2>/dev/null | head -30
+$ dir: printf '%s\n' /tmp/opencode/extract .

@@ -57,6 +57,9 @@ glow/        glow markdown pager    (mapped to ~/.config/glow/glow.yml)
 bottom/      bottom TUI config      (mapped to ~/.config/bottom/bottom.toml)
 dive/        dive config            (mapped to ~/.config/dive/dive.yaml)
 watchexec/   watchexec ignore       (mapped to ~/.config/watchexec/ignore)
+carapace/    carapace styles        (mapped to ~/.config/carapace/styles.json)
+navi/        navi config + cheats   (mapped to ~/.config/navi/config.yaml, ~/.local/share/navi/cheats/)
+atuin/       atuin history config   (mapped to ~/.atuin/config.toml)
 git/         git + delta config     (mapped to ~/.gitconfig)
 lazygit/     Lazygit config         (mapped to ~/.config/lazygit/config.yml)
 gh/          gh CLI config          (mapped to ~/.config/gh/config.yml)
@@ -85,3 +88,7 @@ nvim/        LazyVim starter        (mapped to ~/.config/nvim)
 | `~/.config/bottom/bottom.toml` | `bottom/bottom.toml` |
 | `~/.config/dive/dive.yaml` | `dive/dive.yaml` |
 | `~/.config/watchexec/ignore` | `watchexec/ignore` |
+| `~/.config/carapace/styles.json` | `carapace/styles.json` |
+| `~/.config/navi/config.yaml` | `navi/config.yaml` |
+| `~/.local/share/navi/cheats/*` | `navi/cheats/*` |
+| `~/.atuin/config.toml` | `atuin/config.toml` |

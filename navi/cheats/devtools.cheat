@@ -1,0 +1,419 @@
+% lazygit, git
+
+# Open lazygit
+lazygit
+
+# Open lazygit focused on a panel (status, branch, log, stash)
+lazygit <panel>
+
+$ panel: printf '%s\n' status branch log stash
+
+# Open lazygit on a specific repository
+lazygit -p <repo>
+
+$ repo: fd -t d -d 3 . ~/ 2>/dev/null | head -50
+
+# Open lazygit filtering commits by path
+lazygit -f <path>
+
+$ path: fd -t f -d 4 . . 2>/dev/null | head -100
+
+% delta, difftastic, git
+
+# Diff with delta (already the configured pager)
+git diff
+
+# Diff two commits with delta
+git diff <from>..<to>
+
+$ from: git log --pretty=%h -n 20
+$ to: git log --pretty=%h -n 20
+
+# Word-level diff with delta
+git diff --word-diff
+
+# Side-by-side diff
+git diff --side-by-side
+
+# Diff a file against another revision
+git diff <rev> -- <file>
+
+$ rev: git log --pretty=%h -n 20
+$ file: git ls-files
+
+% gh, github
+
+# Create a PR filling title and body from commits
+gh pr create --fill
+
+# Check out a PR by number
+gh pr checkout <number>
+
+$ number: gh pr list --json number --jq '.[].number'
+
+# List PRs assigned to you
+gh pr list --assignee @me
+
+# Open the repo in the browser
+gh repo view --web
+
+# Watch the latest workflow run
+gh run watch
+
+# List failed workflow runs
+gh run list --status failure
+
+% ripgrep, rg, search
+
+# Search with smart case, hidden files included (configured defaults)
+rg <pattern>
+
+$ pattern: printf '%s\n' TODO FIXME BUG HACK
+
+# List only file names with matches
+rg -l <pattern>
+
+$ pattern: printf '%s\n' TODO FIXME
+
+# Search with 3 lines of context
+rg -C 3 <pattern>
+
+$ pattern: printf '%s\n' TODO FIXME
+
+# Search only a file type
+rg -t <type> <pattern>
+
+$ type: rg --type-list | cut -d: -f1
+$ pattern: printf '%s\n' TODO FIXME
+
+# Search excluding a glob
+rg <pattern> -g '!<glob>'
+
+$ pattern: printf '%s\n' TODO FIXME
+$ glob: printf '%s\n' '*.lock' 'node_modules' 'dist' 'target'
+
+# Show match statistics
+rg --stats <pattern>
+
+$ pattern: printf '%s\n' TODO FIXME
+
+% fd, find
+
+# Find files by extension
+fd -e <ext>
+
+$ ext: printf '%s\n' ts tsx js jsx go rs py md json toml yaml sh
+
+# Find directories up to depth 2
+fd -t d -d 2
+
+# Run a command on every match
+fd -e <ext> -x <command> {}
+
+$ ext: printf '%s\n' md json yaml
+$ command: printf '%s\n' wc -l bat -p
+
+# List all matches with details
+fd -t f -x ls -lh
+
+# Find and delete matching files (asks nothing — be careful)
+fd -e <ext> -X rm -i
+
+$ ext: printf '%s\n' tmp log bak
+
+% fzf, fuzzy
+
+# Pick a file and open it
+fd -t f | fzf --preview 'bat --color=always --line-range :200 {}'
+
+# Check out a branch interactively
+git branch --format='%(refname:short)' | fzf | xargs git checkout
+
+# Kill a process interactively
+ps -eo pid,comm | fzf | awk '{print $1}' | xargs kill
+
+# Preview with bat inside fzf (default opts already set)
+fzf --preview 'bat --color=always --style=numbers --line-range :300 {}'
+
+% eza, ls, tree
+
+# Long listing with git status and dirs first
+eza -lah --git --group-directories-first
+
+# Tree two levels deep
+eza --tree -L 2 --group-directories-first
+
+# Sort by modification time, newest last
+eza -l --sort=modified
+
+# Sort by size, biggest first
+eza -l --sort=size --reverse
+
+# Show only directories
+eza -D
+
+% bat, cat
+
+# Print a file with syntax highlight and line numbers
+bat <file>
+
+$ file: fd -t f -d 3 . . 2>/dev/null | head -100
+
+# Plain output (no decorations)
+bat -p <file>
+
+$ file: fd -t f -d 3 . . 2>/dev/null | head -100
+
+# Show only a line range
+bat -r <range> <file>
+
+$ range: printf '%s\n' 1:50 100:200 500:600
+$ file: fd -t f -d 3 . . 2>/dev/null | head -100
+
+# Show the diff of a file against git HEAD
+bat --diff <file>
+
+$ file: git ls-files
+
+% sd, replace
+
+# Replace text in a file (writes in place)
+sd '<find>' '<replace>' <file>
+
+$ file: fd -t f -d 3 . . 2>/dev/null | head -100
+
+# Preview replacements without writing
+sd -p '<find>' '<replace>' <file>
+
+$ file: fd -t f -d 3 . . 2>/dev/null | head -100
+
+# Replace across every match of an extension
+fd -e <ext> -x sd '<find>' '<replace>' {}
+
+$ ext: printf '%s\n' md json yaml toml ts go
+$ find: printf '%s\n' foo bar TODO FIXME
+
+% yazi, files
+
+# Open the file manager in the current directory
+yazi
+
+# Open yazi on a directory
+yazi <dir>
+
+$ dir: fd -t d -d 3 . ~/ 2>/dev/null | head -50
+
+% dua, disk
+
+# Disk usage of a directory, two levels deep
+dua aggregate --depth 2 <path>
+
+$ path: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+# Interactive disk usage browser (M toggles mtime)
+dua interactive
+
+# Apparent size instead of disk blocks
+dua aggregate --apparent-size --depth 2 <path>
+
+$ path: fd -t d -d 2 . ~/ 2>/dev/null | head -30
+
+% jq, json
+
+# Pretty-print JSON
+jq . <file>
+
+$ file: fd -e json -t f -d 3 . . 2>/dev/null | head -50
+
+# Extract a field from every array element
+jq -r '.<array>[].<field>' <file>
+
+$ file: fd -e json -t f -d 3 . . 2>/dev/null | head -50
+
+# Keys sorted
+jq --sort-keys . <file>
+
+$ file: fd -e json -t f -d 3 . . 2>/dev/null | head -50
+
+% yq, yaml
+
+# Read a nested value
+yq '.<path>' <file>
+
+$ file: fd -e yaml -e yml -t f -d 3 . . 2>/dev/null | head -50
+
+# Edit in place
+yq -i '.<path> = <value>' <file>
+
+$ file: fd -e yaml -e yml -t f -d 3 . . 2>/dev/null | head -50
+
+# Convert YAML to JSON
+yq -o=json '.' <file>
+
+$ file: fd -e yaml -e yml -t f -d 3 . . 2>/dev/null | head -50
+
+% duckdb, sql, data
+
+# Query a CSV without importing it
+duckdb -c "SELECT * FROM '<file>' LIMIT 10"
+
+$ file: fd -e csv -e parquet -e json -t f -d 3 . . 2>/dev/null | head -50
+
+# Describe a CSV schema
+duckdb -c "DESCRIBE SELECT * FROM '<file>'"
+
+$ file: fd -e csv -t f -d 3 . . 2>/dev/null | head -50
+
+# Open a persistent database
+duckdb <db>
+
+$ db: fd -e duckdb -e db -t f -d 3 . ~/ 2>/dev/null | head -20
+
+% glow, markdown
+
+# Render a markdown file
+glow <file>
+
+$ file: fd -e md -t f -d 3 . . 2>/dev/null | head -50
+
+# Render in the TUI
+glow -t <file>
+
+$ file: fd -e md -t f -d 3 . . 2>/dev/null | head -50
+
+# Render a whole directory of markdown files
+glow <dir>
+
+$ dir: fd -t d -d 3 . . 2>/dev/null | head -30
+
+% bottom, btm, monitor
+
+# Open the system monitor
+btm
+
+# Open with a custom config
+btm -C <config>
+
+$ config: printf '%s\n' ~/.config/bottom/bottom.toml
+
+# Minimal view without graphs
+btm --basic
+
+% hyperfine, benchmark
+
+# Benchmark a command with warmup
+hyperfine --warmup 3 '<command>'
+
+# Compare two commands
+hyperfine --runs 20 '<command-a>' '<command-b>'
+
+# Export results as JSON
+hyperfine --export-json <out> '<command>'
+
+$ out: printf '%s\n' bench.json results.json
+
+% watchexec, watch
+
+# Re-run a command when files change
+watchexec -- <command>
+
+# Only watch some extensions
+watchexec -e <exts> -- <command>
+
+$ exts: printf '%s\n' rs go ts py md sh
+
+# Clear the screen and restart the process
+watchexec -c -r -- <command>
+
+# Watch a specific directory
+watchexec -w <dir> -- <command>
+
+$ dir: fd -t d -d 2 . . 2>/dev/null | head -30
+
+% dive, docker
+
+# Inspect an image's layers
+dive <image>
+
+$ image: docker images --format '{{.Repository}}:{{.Tag}}' 2>/dev/null | head -30
+
+# Validate an image against CI rules
+dive --ci <image>
+
+$ image: docker images --format '{{.Repository}}:{{.Tag}}' 2>/dev/null | head -30
+
+# Use podman as the source
+dive --source podman <image>
+
+$ image: printf '%s\n' alpine:latest nginx:latest
+
+% zoxide, z, cd
+
+# Jump to a directory by frecency
+z <query>
+
+$ query: printf '%s\n' dotfiles dev-setup Downloads Documents
+
+# Interactive directory picker
+zi
+
+# Go back to the previous directory
+z -
+
+# List the highest ranked directories
+zoxide query -l | head -20
+
+% carapace, completions
+
+# List every available completer
+carapace --list | fzf
+
+# Set a style (writes to styles.json)
+carapace --style 'carapace.Value=bold,magenta'
+
+# List available macros
+carapace --macro
+
+# Generate a completion script for a command
+carapace <command> zsh
+
+$ command: carapace --list | head -50
+
+% navi, cheatsheet
+
+# Browse cheatsheets interactively
+navi
+
+# Search cheatsheets by query
+navi --query <query>
+
+$ query: printf '%s\n' git docker mise lazygit json
+
+# Print the best matching snippet without running it
+navi --print --query <query> --best-match
+
+$ query: printf '%s\n' git docker mise lazygit json
+
+# Add a cheatsheet repository
+navi repo add <repo>
+
+$ repo: printf '%s\n' denisidoro/cheats
+
+% atuin, history
+
+# Search shell history interactively
+atuin search
+
+# Search history with an initial query
+atuin search <query>
+
+$ query: printf '%s\n' git docker mise rg
+
+# Show history statistics
+atuin stats
+
+# List the last commands
+atuin history list | tail -30
+
+# Print the default config for reference
+atuin default-config

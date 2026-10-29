@@ -1,0 +1,9 @@
+{
+  "carapace": {
+    "Value": "bold magenta",
+    "Description": "240",
+    "Error": "bold red",
+    "Flag": "green",
+    "Arg": "yellow"
+  }
+}
