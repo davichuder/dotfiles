@@ -1,0 +1,31 @@
+gui:
+  scrollHeight: 2
+  language: auto
+  theme:
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - default
+    selectedLineBgColor:
+      - green
+      - bold
+    optionsTextColor:
+      - green
+  wrapMainPanel: true
+  sidePanelWidth: 0.3
+  showBottomLine: true
+  expandFocusedSidePanel: false
+  screenMode: normal
+  containerStatusHealthStyle: long
+logs:
+  since: 30m
+stats:
+  graphs:
+    - caption: CPU (%)
+      statPath: DerivedStats.CPUPercentage
+      color: green
+    - caption: Memory (%)
+      statPath: DerivedStats.MemoryPercentage
+      color: cyan
+  maxDuration: 3m0s

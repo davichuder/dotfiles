@@ -1,0 +1,80 @@
+settings:
+  loggingEnable: false
+  loggingPath: lazyjournal.log
+  loggingType: text
+  tailModeDisable: false
+  tailModeLines: 5000
+  updateInterval: 3
+  minSymbolFilter: 3
+  timezoneFilter: +00:00
+  mouseDisable: false
+  wrapModeDisable: false
+  colorMode: bat
+  colorActionsDisable: false
+  unitType: service
+  journalField: SYSLOG_IDENTIFIER
+  journalPriority: debug
+  journalBoot: all
+  customPath: ""
+  dockerStreamOnly: false
+  dockerContext: default
+  podmanContext: ""
+  kubernetesContext: default
+  kubernetesNamespace: all
+  disableFastMode: false
+
+interface:
+  systemLogList: systemUnits
+  fileLogList: varlog
+  containerLogList: docker
+  sinceDateFilterMode: false
+  untilDateFilterMode: false
+  foregroundColor: default
+  backgroundColor: default
+  selectedForegroundColor: black
+  selectedBackgroundColor: green
+  frameColor: green
+  titleColor: green
+  selectedFrameColor: green
+  selectedTitleColor: green
+  errorColor: red
+
+hotkeys:
+  showHelp: f1
+  showManager: f2
+  switchWindow: tab
+  backSwitchWindows: shift+tab
+  up: k
+  quickUp: shift+k
+  veryQuickUp: ctrl+k
+  switchFilterMode: ctrl+k
+  down: j
+  quickDown: shift+j
+  veryQuickDown: ctrl+j
+  backSwitchFilterMode: ctrl+j
+  left: h
+  right: l
+  disableFilterByDate: delete
+  loadJournal: enter
+  goToFilter: /
+  goToEnd: ctrl+e
+  goToTop: ctrl+a
+  tailModeMore: "]"
+  tailModeLess: "["
+  updateIntervalMore: "}"
+  updateIntervalLess: "{"
+  autoUpdateJournal: ctrl+u
+  updateJournal: ctrl+r
+  updateLists: ctrl+q
+  switchColorMode: ctrl+w
+  switchPriority: ctrl+p
+  switchDockerMode: ctrl+d
+  switchStreamMode: ctrl+s
+  timestampShow: ctrl+t
+  copyToClipboard: shift+c
+  exit: ctrl+c
+
+# ssh:
+#   hosts:
+#     - user@host
+#     - user@host -p 2222 -o ConnectTimeout=5

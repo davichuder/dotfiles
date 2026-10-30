@@ -1,0 +1,39 @@
+onboarding = false
+
+[ui]
+status_indicators = "symbols"
+
+[ui.toast]
+delivery = "herdr"
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
+
+[keys]
+# Workspaces (shift)
+previous_workspace = "prefix+shift+p"
+next_workspace =      "prefix+shift+n"
+new_workspace =       "prefix+shift+c"
+rename_workspace =    "prefix+shift+t"
+close_workspace =     "prefix+shift+d"
+switch_workspace =     "prefix+shift+1..9"
+
+# Tabs (no modifier)
+new_tab =        "prefix+c"
+previous_tab =   "prefix+p"
+next_tab =       "prefix+n"
+rename_tab =     "prefix+t"
+close_tab =      "prefix+d"
+switch_tab =     "prefix+1..9"
+
+# Agents (ctrl)
+next_agent =      "prefix+ctrl+n"
+previous_agent =  "prefix+ctrl+p"
+focus_agent =     "prefix+ctrl+1..9"
+
+# Pane extras
+last_pane =      "prefix+a"
+rename_pane =     "prefix+alt+p"   # moved: prefix+shift+p now used by previous_workspace
+clear_pane =      "prefix+ctrl+k"
+# pane navigation/swapping keep herdr default (hjkl)
