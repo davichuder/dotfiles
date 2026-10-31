@@ -16,10 +16,12 @@ keybind = ctrl+shift+n=unbind
 keybind = ctrl+shift+w=unbind
 keybind = ctrl+shift+s=unbind
 
-# Server-side decorations: the compositor draws the titlebar instead of GTK.
-# Works around the WSLg "maximized borderless window is offset" bug.
-window-decoration = server
+# Native decorations (compositor-chosen). WSLg's maximize offset is fixed in
+# WSL >= 2.6.x; if it ever comes back, switch this to `server`.
+window-decoration = auto
 
 # --- herdr por defecto ---
 command = herdr
 
+# X11/WSL: force clipboard flush on paste
+keybind = ctrl+v=paste_from_clipboard

@@ -16,7 +16,7 @@
     "lazyvim.plugins.extras.lang.sql",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.git",
-    "lazyvim.plugins.extras.formatting.biome",
+    "lazyvim.plugins.extras.lang.typescript.biome",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lsp.neoconf",
     "lazyvim.plugins.extras.util.dot",
