@@ -17,12 +17,17 @@ dev-setup's `mise.dotfiles.toml`:
 "~/dotfiles" = { url = "https://github.com/davichuder/dotfiles.git", ref = "main" }
 
 [dotfiles]
-"~/.config/nvim" = "~/dotfiles/nvim"
+"~/.config/nvim" = { source = "~/dotfiles/nvim", mode = "symlink" }
 ```
 
 Each `[dotfiles]` entry is a single mapping: destination (live path) → source
-(path inside this repo). Some tool that might plain-read this repo expecting a
-manager-specific layout stays custom: it is not a chezmoi-style source tree
+(path inside this repo), deployed as a symlink. Because they are symlinks the
+live file *is* the file in this checkout: editing `~/.config/nvim/lua/...`
+edits `~/dotfiles/nvim/lua/...`, and lazy.nvim writes `lazy-lock.json` straight
+into the repo. `mise dot diff` reports drift, `mise dot apply` repairs a link
+that went missing or was replaced. Some tool that might plain-read this repo
+expecting a manager-specific layout stays custom: it is not a chezmoi-style
+source tree
 (`chezmoi` templates like `dot_zshrc.tmpl` don't exist here) and not a stow
 package tree either. If you want to use it with a different tool, wire your own
 mapping table — nothing in this repo assumes one.
