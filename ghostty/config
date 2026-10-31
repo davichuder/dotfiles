@@ -3,9 +3,9 @@ font-family = "MesloLGS Nerd Font"
 font-family = "FiraCode Nerd Font"
 font-size = 12
 
-# tamaño inicial (cols x ?)
-window-width = 800
-window-height = 600
+# tamaño inicial (en celdas: columnas x filas)
+window-width = 250
+window-height = 60
 
 # --- tema ---
 theme = Night Owl
@@ -16,8 +16,9 @@ keybind = ctrl+shift+n=unbind
 keybind = ctrl+shift+w=unbind
 keybind = ctrl+shift+s=unbind
 
-# keep UI decorations (title bar), only unbind tab/split keys
-window-decoration = auto
+# Server-side decorations: the compositor draws the titlebar instead of GTK.
+# Works around the WSLg "maximized borderless window is offset" bug.
+window-decoration = server
 
 # --- herdr por defecto ---
 command = herdr
